@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/Ryan1/esp/new_proj/build/CMakeFiles/bootloader
+/Users/Ryan1/esp/new_proj/build/CMakeFiles/bootloader.rule
+/Users/Ryan1/esp/new_proj/build/CMakeFiles/bootloader-complete.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/Ryan1/esp/new_proj/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

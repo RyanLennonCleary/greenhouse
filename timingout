@@ -1,0 +1,1080 @@
+[1/5] cd /Users/Ryan1/esp/new_proj/build/esp-idf/esptool_py && /Users/Ryan1/.espressif/python_env/idf4.4_py3.9_env/bin/python /Users/Ryan1/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/Ryan1/esp/new_proj/build/partition_table/partition-table.bin /Users/Ryan1/esp/new_proj/build/new_proj.bin
+new_proj.bin binary size 0x2c060 bytes. Smallest app partition is 0x100000 bytes. 0xd3fa0 bytes (83%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/Ryan1/esp/new_proj/build/bootloader/esp-idf/esptool_py && /Users/Ryan1/.espressif/python_env/idf4.4_py3.9_env/bin/python /Users/Ryan1/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/Ryan1/esp/new_proj/build/bootloader/bootloader.bin
+Bootloader binary size 0x6e30 bytes. 0x1d0 bytes (2%) free.
+[2/3] cd /Users/Ryan1/esp/esp-idf/components/esptool_py && /usr/local/Cellar/cmake/3.23.2/bin/cmake -D IDF_PATH="/Users/Ryan1/esp/esp-idf" -D SERIAL_TOOL="/Users/Ryan1/.espressif/python_env/idf4.4_py3.9_env/bin/python /Users/Ryan1/esp/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32" -D SERIAL_TOOL_ARGS="--before=default_reset --after=hard_reset write_flash @flash_args" -D WORKING_DIRECTORY="/Users/Ryan1/esp/new_proj/build" -P /Users/Ryan1/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 new_proj.bin 0x8000 partition_table/partition-table.bin
+esptool.py v3.3-dev
+Serial port /dev/cu.usbserial-0001
+Connecting...................
+Chip is ESP32-D0WD (revision 1)
+Features: WiFi, BT, Dual Core, Coding Scheme None
+Crystal is 40MHz
+MAC: 30:ae:a4:96:a4:14
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x0003cfff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 28208 bytes to 16928...
+Writing at 0x00001000... (50 %)
+Writing at 0x00007b64... (100 %)
+Wrote 28208 bytes (16928 compressed) at 0x00001000 in 0.8 seconds (effective 283.2 kbit/s)...
+Hash of data verified.
+Compressed 180320 bytes to 94023...
+Writing at 0x00010000... (16 %)
+Writing at 0x0001bcc9... (33 %)
+Writing at 0x000214dd... (50 %)
+Writing at 0x00027050... (66 %)
+Writing at 0x0002f774... (83 %)
+Writing at 0x000378a2... (100 %)
+Wrote 180320 bytes (94023 compressed) at 0x00010000 in 2.7 seconds (effective 531.6 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 275.7 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+40080400,len:4192
+entry 0x400806dc
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6992
+load:0x40078000,len:16932
+ho 0 tail 12 room 4
+load:0x40080400,len:4192
+entry 0x400806dc
+[0;32mI (28) boot: ESP-IDF v4.4.1-dirty 2nd stage bootloader[0m
+[0;32mI (28) boot: compile time 17:53:52[0m
+[0;32mI (28) boot: chip revision: 1[0m
+[0;32mI (32) boot_comm: chip revision: 1, min. bootloader chip revision: 0[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (43) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) boot_comm: chip revision: 1, min. application chip revision: 0[0m
+[0;32mI (102) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=088c4h ( 35012) map[0m
+[0;32mI (123) esp_image: segment 1: paddr=000188ec vaddr=3ffb0000 size=0233ch (  9020) load[0m
+[0;32mI (127) esp_image: segment 2: paddr=0001ac30 vaddr=40080000 size=053e8h ( 21480) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=15f0ch ( 89868) map[0m
+[0;32mI (171) esp_image: segment 4: paddr=00035f34 vaddr=400853e8 size=060ech ( 24812) load[0m
+[0;32mI (182) esp_image: segment 5: paddr=0003c028 vaddr=50000000 size=00010h (    16) load[0m
+[0;32mI (189) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (189) boot: Disabling RNG early entropy source...[0m
+[0;32mI (202) cpu_start: Pro cpu up.[0m
+[0;32mI (202) cpu_start: Starting app cpu, entry point is 0x40080fec[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (216) cpu_start: Pro cpu start user code[0m
+[0;32mI (216) cpu_start: cpu freq: 80000000[0m
+[0;32mI (216) cpu_start: Application information:[0m
+[0;32mI (221) cpu_start: Project name:     new_proj[0m
+[0;32mI (226) cpu_start: App version:      1[0m
+[0;32mI (230) cpu_start: Compile time:     Jul 24 2022 17:53:49[0m
+[0;32mI (236) cpu_start: ELF file SHA256:  e03e4506bd3c5370...[0m
+[0;32mI (242) cpu_start: ESP-IDF:          v4.4.1-dirty[0m
+[0;32mI (248) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (255) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (261) heap_init: At 3FFB2C30 len 0002D3D0 (180 KiB): DRAM[0m
+[0;32mI (267) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (273) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (280) heap_init: At 4008B4D4 len 00014B2C (82 KiB): IRAM[0m
+[0;32mI (288) spi_flash: detected chip: generic[0m
+[0;32mI (291) spi_flash: flash io: dio[0m
+[0;33mW (295) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (309) cpu_start: Starting scheduler on PRO CPU.[0m
+[0;32mI (0) cpu_start: Starting scheduler on APP CPU.[0m
+starting timer print task
+[0;32mI (4314) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (4334) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2015304, level: 0, message number: 0
+time_difference_micros: 94, level: 0, message number: 1
+time_difference_micros: 52, level: 1, message number: 2
+time_difference_micros: 23, level: 0, message number: 3
+time_difference_micros: 53, level: 1, message number: 4
+time_difference_micros: 23, level: 0, message number: 5
+[0;32mI (4354) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 54, level: 1, message number: 6
+time_difference_micros: 28, level: 0, message number: 7
+time_difference_micros: 48, level: 1, message number: 8
+time_difference_micros: 70, level: 0, message number: 9
+time_difference_micros: 53, level: 1, message number: 10
+time_difference_micros: 23, level: 0, message number: 11
+time_difference_micros: 53, level: 1, message number: 12
+time_difference_micros: 23, level: 0, message number: 13
+time_difference_micros: 53, level: 1, message number: 14
+time_difference_micros: 24, level: 0, message number: 15
+time_difference_micros: 53, level: 1, message number: 16
+time_difference_micros: 24, level: 0, message number: 17
+time_difference_micros: 53, level: 1, message number: 18
+time_difference_micros: 23, level: 0, message number: 19
+time_difference_micros: 53, level: 1, message number: 20
+time_difference_micros: 23, level: 0, message number: 21
+time_difference_micros: 53, level: 1, message number: 22
+time_difference_micros: 23, level: 0, message number: 23
+time_difference_micros: 53, level: 1, message number: 24
+time_difference_micros: 24, level: 0, message number: 25
+time_difference_micros: 53, level: 1, message number: 26
+time_difference_micros: 23, level: 0, message number: 27
+time_difference_micros: 53, level: 1, message number: 28
+time_difference_micros: 23, level: 0, message number: 29
+time_difference_micros: 53, level: 1, message number: 30
+time_difference_micros: 23, level: 0, message number: 31
+time_difference_micros: 53, level: 1, message number: 32
+time_difference_micros: 70, level: 0, message number: 33
+time_difference_micros: 53, level: 1, message number: 34
+time_difference_micros: 69, level: 0, message number: 35
+time_difference_micros: 53, level: 1, message number: 36
+time_difference_micros: 70, level: 0, message number: 37
+time_difference_micros: 53, level: 1, message number: 38
+time_difference_micros: 23, level: 0, message number: 39
+time_difference_micros: 53, level: 1, message number: 40
+time_difference_micros: 24, level: 0, message number: 41
+time_difference_micros: 53, level: 1, message number: 42
+time_difference_micros: 23, level: 0, message number: 43
+time_difference_micros: 53, level: 1, message number: 44
+time_difference_micros: 24, level: 0, message number: 45
+time_difference_micros: 53, level: 1, message number: 46
+time_difference_micros: 24, level: 0, message number: 47
+time_difference_micros: 53, level: 1, message number: 48
+time_difference_micros: 23, level: 0, message number: 49
+time_difference_micros: 53, level: 1, message number: 50
+time_difference_micros: 23, level: 0, message number: 51
+time_difference_micros: 53, level: 1, message number: 52
+time_difference_micros: 69, level: 0, message number: 53
+time_difference_micros: 53, level: 1, message number: 54
+time_difference_micros: 24, level: 0, message number: 55
+time_difference_micros: 53, level: 1, message number: 56
+time_difference_micros: 25, level: 0, message number: 57
+time_difference_micros: 53, level: 1, message number: 58
+time_difference_micros: 23, level: 0, message number: 59
+time_difference_micros: 53, level: 1, message number: 60
+time_difference_micros: 69, level: 0, message number: 61
+time_difference_micros: 53, level: 1, message number: 62
+time_difference_micros: 23, level: 0, message number: 63
+time_difference_micros: 53, level: 1, message number: 64
+time_difference_micros: 70, level: 0, message number: 65
+time_difference_micros: 53, level: 1, message number: 66
+time_difference_micros: 23, level: 0, message number: 67
+time_difference_micros: 53, level: 1, message number: 68
+time_difference_micros: 23, level: 0, message number: 69
+time_difference_micros: 53, level: 1, message number: 70
+time_difference_micros: 23, level: 0, message number: 71
+time_difference_micros: 53, level: 1, message number: 72
+time_difference_micros: 70, level: 0, message number: 73
+time_difference_micros: 53, level: 1, message number: 74
+time_difference_micros: 21223, level: 0, message number: 75
+[0;32mI (6374) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (6394) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2035406, level: 0, message number: 76
+time_difference_micros: 53, level: 1, message number: 77
+time_difference_micros: 69, level: 0, message number: 78
+time_difference_micros: 53, level: 1, message number: 79
+time_difference_micros: 23, level: 0, message number: 80
+[0;32mI (6414) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 81
+time_difference_micros: 23, level: 0, message number: 82
+time_difference_micros: 53, level: 1, message number: 83
+time_difference_micros: 23, level: 0, message number: 84
+data invalid, raw: 1001c04518
+time_difference_micros: 53, level: 1, message number: 85
+time_difference_micros: 70, level: 0, message number: 86
+time_difference_micros: 53, level: 1, message number: 87
+time_difference_micros: 23, level: 0, message number: 88
+time_difference_micros: 53, level: 1, message number: 89
+time_difference_micros: 23, level: 0, message number: 90
+time_difference_micros: 53, level: 1, message number: 91
+time_difference_micros: 23, level: 0, message number: 92
+time_difference_micros: 53, level: 1, message number: 93
+time_difference_micros: 23, level: 0, message number: 94
+time_difference_micros: 53, level: 1, message number: 95
+time_difference_micros: 23, level: 0, message number: 96
+time_difference_micros: 53, level: 1, message number: 97
+time_difference_micros: 23, level: 0, message number: 98
+time_difference_micros: 53, level: 1, message number: 99
+time_difference_micros: 23, level: 0, message number: 100
+time_difference_micros: 53, level: 1, message number: 101
+time_difference_micros: 24, level: 0, message number: 102
+time_difference_micros: 53, level: 1, message number: 103
+time_difference_micros: 23, level: 0, message number: 104
+time_difference_micros: 53, level: 1, message number: 105
+time_difference_micros: 23, level: 0, message number: 106
+time_difference_micros: 53, level: 1, message number: 107
+time_difference_micros: 23, level: 0, message number: 108
+time_difference_micros: 53, level: 1, message number: 109
+time_difference_micros: 69, level: 0, message number: 110
+time_difference_micros: 53, level: 1, message number: 111
+time_difference_micros: 69, level: 0, message number: 112
+time_difference_micros: 53, level: 1, message number: 113
+time_difference_micros: 69, level: 0, message number: 114
+time_difference_micros: 53, level: 1, message number: 115
+time_difference_micros: 23, level: 0, message number: 116
+time_difference_micros: 53, level: 1, message number: 117
+time_difference_micros: 24, level: 0, message number: 118
+time_difference_micros: 53, level: 1, message number: 119
+time_difference_micros: 23, level: 0, message number: 120
+time_difference_micros: 53, level: 1, message number: 121
+time_difference_micros: 23, level: 0, message number: 122
+time_difference_micros: 53, level: 1, message number: 123
+time_difference_micros: 23, level: 0, message number: 124
+time_difference_micros: 53, level: 1, message number: 125
+time_difference_micros: 23, level: 0, message number: 126
+time_difference_micros: 53, level: 1, message number: 127
+time_difference_micros: 23, level: 0, message number: 128
+time_difference_micros: 53, level: 1, message number: 129
+time_difference_micros: 69, level: 0, message number: 130
+time_difference_micros: 53, level: 1, message number: 131
+time_difference_micros: 23, level: 0, message number: 132
+time_difference_micros: 53, level: 1, message number: 133
+time_difference_micros: 24, level: 0, message number: 134
+time_difference_micros: 53, level: 1, message number: 135
+time_difference_micros: 23, level: 0, message number: 136
+time_difference_micros: 53, level: 1, message number: 137
+time_difference_micros: 69, level: 0, message number: 138
+time_difference_micros: 53, level: 1, message number: 139
+time_difference_micros: 23, level: 0, message number: 140
+time_difference_micros: 53, level: 1, message number: 141
+time_difference_micros: 69, level: 0, message number: 142
+time_difference_micros: 53, level: 1, message number: 143
+time_difference_micros: 23, level: 0, message number: 144
+time_difference_micros: 53, level: 1, message number: 145
+time_difference_micros: 23, level: 0, message number: 146
+time_difference_micros: 53, level: 1, message number: 147
+time_difference_micros: 23, level: 0, message number: 148
+time_difference_micros: 53, level: 1, message number: 149
+time_difference_micros: 70, level: 0, message number: 150
+time_difference_micros: 53, level: 1, message number: 151
+time_difference_micros: 16201, level: 0, message number: 152
+[0;32mI (8424) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (8444) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030467, level: 0, message number: 153
+time_difference_micros: 53, level: 1, message number: 154
+time_difference_micros: 69, level: 0, message number: 155
+time_difference_micros: 53, level: 1, message number: 156
+time_difference_micros: 23, level: 0, message number: 157
+[0;32mI (8464) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 158
+time_difference_micros: 23, level: 0, message number: 159
+time_difference_micros: 53, level: 1, message number: 160
+time_difference_micros: 23, level: 0, message number: 161
+time_difference_micros: 53, level: 1, message number: 162
+time_difference_micros: 70, level: 0, message number: 163
+time_difference_micros: 53, level: 1, message number: 164
+time_difference_micros: 23, level: 0, message number: 165
+time_difference_micros: 53, level: 1, message number: 166
+time_difference_micros: 23, level: 0, message number: 167
+data invalid, raw: 800e0228c4
+time_difference_micros: 53, level: 1, message number: 168
+time_difference_micros: 23, level: 0, message number: 169
+time_difference_micros: 53, level: 1, message number: 170
+time_difference_micros: 23, level: 0, message number: 171
+time_difference_micros: 53, level: 1, message number: 172
+time_difference_micros: 23, level: 0, message number: 173
+time_difference_micros: 53, level: 1, message number: 174
+time_difference_micros: 23, level: 0, message number: 175
+time_difference_micros: 53, level: 1, message number: 176
+time_difference_micros: 23, level: 0, message number: 177
+time_difference_micros: 53, level: 1, message number: 178
+time_difference_micros: 24, level: 0, message number: 179
+time_difference_micros: 53, level: 1, message number: 180
+time_difference_micros: 23, level: 0, message number: 181
+time_difference_micros: 53, level: 1, message number: 182
+time_difference_micros: 23, level: 0, message number: 183
+time_difference_micros: 53, level: 1, message number: 184
+time_difference_micros: 23, level: 0, message number: 185
+time_difference_micros: 53, level: 1, message number: 186
+time_difference_micros: 69, level: 0, message number: 187
+time_difference_micros: 53, level: 1, message number: 188
+time_difference_micros: 69, level: 0, message number: 189
+time_difference_micros: 53, level: 1, message number: 190
+time_difference_micros: 69, level: 0, message number: 191
+time_difference_micros: 53, level: 1, message number: 192
+time_difference_micros: 23, level: 0, message number: 193
+time_difference_micros: 53, level: 1, message number: 194
+time_difference_micros: 24, level: 0, message number: 195
+time_difference_micros: 53, level: 1, message number: 196
+time_difference_micros: 23, level: 0, message number: 197
+time_difference_micros: 53, level: 1, message number: 198
+time_difference_micros: 23, level: 0, message number: 199
+time_difference_micros: 53, level: 1, message number: 200
+time_difference_micros: 23, level: 0, message number: 201
+time_difference_micros: 53, level: 1, message number: 202
+time_difference_micros: 23, level: 0, message number: 203
+time_difference_micros: 53, level: 1, message number: 204
+time_difference_micros: 23, level: 0, message number: 205
+time_difference_micros: 53, level: 1, message number: 206
+time_difference_micros: 69, level: 0, message number: 207
+time_difference_micros: 53, level: 1, message number: 208
+time_difference_micros: 23, level: 0, message number: 209
+time_difference_micros: 53, level: 1, message number: 210
+time_difference_micros: 24, level: 0, message number: 211
+time_difference_micros: 53, level: 1, message number: 212
+time_difference_micros: 23, level: 0, message number: 213
+time_difference_micros: 53, level: 1, message number: 214
+time_difference_micros: 69, level: 0, message number: 215
+time_difference_micros: 53, level: 1, message number: 216
+time_difference_micros: 23, level: 0, message number: 217
+time_difference_micros: 53, level: 1, message number: 218
+time_difference_micros: 69, level: 0, message number: 219
+time_difference_micros: 53, level: 1, message number: 220
+time_difference_micros: 23, level: 0, message number: 221
+time_difference_micros: 53, level: 1, message number: 222
+time_difference_micros: 23, level: 0, message number: 223
+time_difference_micros: 53, level: 1, message number: 224
+time_difference_micros: 23, level: 0, message number: 225
+time_difference_micros: 53, level: 1, message number: 226
+time_difference_micros: 70, level: 0, message number: 227
+time_difference_micros: 53, level: 1, message number: 228
+time_difference_micros: 16198, level: 0, message number: 229
+[0;32mI (10474) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (10494) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030466, level: 0, message number: 230
+time_difference_micros: 51, level: 1, message number: 231
+time_difference_micros: 69, level: 0, message number: 232
+time_difference_micros: 53, level: 1, message number: 233
+time_difference_micros: 23, level: 0, message number: 234
+[0;32mI (10514) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 235
+time_difference_micros: 23, level: 0, message number: 236
+time_difference_micros: 53, level: 1, message number: 237
+time_difference_micros: 23, level: 0, message number: 238
+time_difference_micros: 53, level: 1, message number: 239
+time_difference_micros: 70, level: 0, message number: 240
+time_difference_micros: 53, level: 1, message number: 241
+time_difference_micros: 23, level: 0, message number: 242
+time_difference_micros: 53, level: 1, message number: 243
+time_difference_micros: 23, level: 0, message number: 244
+time_difference_micros: 53, level: 1, message number: 245
+time_difference_micros: 23, level: 0, message number: 246
+time_difference_micros: 53, level: 1, message number: 247
+time_difference_micros: 23, level: 0, message number: 248
+time_difference_micros: 53, level: 1, message number: 249
+time_difference_micros: 23, level: 0, message number: 250
+data invalid, raw: 70114620
+time_difference_micros: 53, level: 1, message number: 251
+time_difference_micros: 23, level: 0, message number: 252
+time_difference_micros: 53, level: 1, message number: 253
+time_difference_micros: 23, level: 0, message number: 254
+time_difference_micros: 53, level: 1, message number: 255
+time_difference_micros: 24, level: 0, message number: 256
+time_difference_micros: 53, level: 1, message number: 257
+time_difference_micros: 23, level: 0, message number: 258
+time_difference_micros: 53, level: 1, message number: 259
+time_difference_micros: 23, level: 0, message number: 260
+time_difference_micros: 53, level: 1, message number: 261
+time_difference_micros: 23, level: 0, message number: 262
+time_difference_micros: 53, level: 1, message number: 263
+time_difference_micros: 69, level: 0, message number: 264
+time_difference_micros: 53, level: 1, message number: 265
+time_difference_micros: 69, level: 0, message number: 266
+time_difference_micros: 53, level: 1, message number: 267
+time_difference_micros: 69, level: 0, message number: 268
+time_difference_micros: 53, level: 1, message number: 269
+time_difference_micros: 23, level: 0, message number: 270
+time_difference_micros: 53, level: 1, message number: 271
+time_difference_micros: 24, level: 0, message number: 272
+time_difference_micros: 53, level: 1, message number: 273
+time_difference_micros: 23, level: 0, message number: 274
+time_difference_micros: 53, level: 1, message number: 275
+time_difference_micros: 23, level: 0, message number: 276
+time_difference_micros: 53, level: 1, message number: 277
+time_difference_micros: 23, level: 0, message number: 278
+time_difference_micros: 53, level: 1, message number: 279
+time_difference_micros: 23, level: 0, message number: 280
+time_difference_micros: 53, level: 1, message number: 281
+time_difference_micros: 23, level: 0, message number: 282
+time_difference_micros: 53, level: 1, message number: 283
+time_difference_micros: 69, level: 0, message number: 284
+time_difference_micros: 53, level: 1, message number: 285
+time_difference_micros: 23, level: 0, message number: 286
+time_difference_micros: 53, level: 1, message number: 287
+time_difference_micros: 70, level: 0, message number: 288
+time_difference_micros: 53, level: 1, message number: 289
+time_difference_micros: 23, level: 0, message number: 290
+time_difference_micros: 53, level: 1, message number: 291
+time_difference_micros: 69, level: 0, message number: 292
+time_difference_micros: 53, level: 1, message number: 293
+time_difference_micros: 23, level: 0, message number: 294
+time_difference_micros: 53, level: 1, message number: 295
+time_difference_micros: 69, level: 0, message number: 296
+time_difference_micros: 53, level: 1, message number: 297
+time_difference_micros: 23, level: 0, message number: 298
+time_difference_micros: 53, level: 1, message number: 299
+time_difference_micros: 23, level: 0, message number: 300
+time_difference_micros: 53, level: 1, message number: 301
+time_difference_micros: 69, level: 0, message number: 302
+time_difference_micros: 53, level: 1, message number: 303
+time_difference_micros: 24, level: 0, message number: 304
+time_difference_micros: 53, level: 1, message number: 305
+time_difference_micros: 16155, level: 0, message number: 306
+[0;32mI (12524) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (12544) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030467, level: 0, message number: 307
+time_difference_micros: 54, level: 1, message number: 308
+time_difference_micros: 69, level: 0, message number: 309
+time_difference_micros: 53, level: 1, message number: 310
+time_difference_micros: 23, level: 0, message number: 311
+[0;32mI (12564) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 312
+time_difference_micros: 23, level: 0, message number: 313
+time_difference_micros: 53, level: 1, message number: 314
+time_difference_micros: 23, level: 0, message number: 315
+time_difference_micros: 53, level: 1, message number: 316
+time_difference_micros: 70, level: 0, message number: 317
+time_difference_micros: 53, level: 1, message number: 318
+time_difference_micros: 23, level: 0, message number: 319
+time_difference_micros: 53, level: 1, message number: 320
+time_difference_micros: 23, level: 0, message number: 321
+time_difference_micros: 53, level: 1, message number: 322
+time_difference_micros: 23, level: 0, message number: 323
+time_difference_micros: 53, level: 1, message number: 324
+time_difference_micros: 23, level: 0, message number: 325
+time_difference_micros: 53, level: 1, message number: 326
+time_difference_micros: 23, level: 0, message number: 327
+time_difference_micros: 53, level: 1, message number: 328
+time_difference_micros: 23, level: 0, message number: 329
+time_difference_micros: 53, level: 1, message number: 330
+time_difference_micros: 23, level: 0, message number: 331
+time_difference_micros: 53, level: 1, message number: 332
+time_difference_micros: 24, level: 0, message number: 333
+data invalid, raw: 380aa5100
+time_difference_micros: 53, level: 1, message number: 334
+time_difference_micros: 23, level: 0, message number: 335
+time_difference_micros: 53, level: 1, message number: 336
+time_difference_micros: 23, level: 0, message number: 337
+time_difference_micros: 53, level: 1, message number: 338
+time_difference_micros: 23, level: 0, message number: 339
+time_difference_micros: 53, level: 1, message number: 340
+time_difference_micros: 69, level: 0, message number: 341
+time_difference_micros: 53, level: 1, message number: 342
+time_difference_micros: 69, level: 0, message number: 343
+time_difference_micros: 53, level: 1, message number: 344
+time_difference_micros: 69, level: 0, message number: 345
+time_difference_micros: 53, level: 1, message number: 346
+time_difference_micros: 23, level: 0, message number: 347
+time_difference_micros: 53, level: 1, message number: 348
+time_difference_micros: 24, level: 0, message number: 349
+time_difference_micros: 53, level: 1, message number: 350
+time_difference_micros: 23, level: 0, message number: 351
+time_difference_micros: 53, level: 1, message number: 352
+time_difference_micros: 23, level: 0, message number: 353
+time_difference_micros: 53, level: 1, message number: 354
+time_difference_micros: 23, level: 0, message number: 355
+time_difference_micros: 53, level: 1, message number: 356
+time_difference_micros: 23, level: 0, message number: 357
+time_difference_micros: 53, level: 1, message number: 358
+time_difference_micros: 23, level: 0, message number: 359
+time_difference_micros: 53, level: 1, message number: 360
+time_difference_micros: 69, level: 0, message number: 361
+time_difference_micros: 53, level: 1, message number: 362
+time_difference_micros: 23, level: 0, message number: 363
+time_difference_micros: 53, level: 1, message number: 364
+time_difference_micros: 70, level: 0, message number: 365
+time_difference_micros: 53, level: 1, message number: 366
+time_difference_micros: 23, level: 0, message number: 367
+time_difference_micros: 53, level: 1, message number: 368
+time_difference_micros: 69, level: 0, message number: 369
+time_difference_micros: 53, level: 1, message number: 370
+time_difference_micros: 23, level: 0, message number: 371
+time_difference_micros: 53, level: 1, message number: 372
+time_difference_micros: 69, level: 0, message number: 373
+time_difference_micros: 53, level: 1, message number: 374
+time_difference_micros: 23, level: 0, message number: 375
+time_difference_micros: 53, level: 1, message number: 376
+time_difference_micros: 23, level: 0, message number: 377
+time_difference_micros: 53, level: 1, message number: 378
+time_difference_micros: 69, level: 0, message number: 379
+time_difference_micros: 53, level: 1, message number: 380
+time_difference_micros: 24, level: 0, message number: 381
+time_difference_micros: 53, level: 1, message number: 382
+time_difference_micros: 16150, level: 0, message number: 383
+[0;32mI (14574) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (14594) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030467, level: 0, message number: 384
+time_difference_micros: 53, level: 1, message number: 385
+time_difference_micros: 69, level: 0, message number: 386
+time_difference_micros: 53, level: 1, message number: 387
+time_difference_micros: 23, level: 0, message number: 388
+[0;32mI (14614) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 389
+time_difference_micros: 23, level: 0, message number: 390
+time_difference_micros: 53, level: 1, message number: 391
+time_difference_micros: 23, level: 0, message number: 392
+time_difference_micros: 53, level: 1, message number: 393
+time_difference_micros: 70, level: 0, message number: 394
+time_difference_micros: 53, level: 1, message number: 395
+time_difference_micros: 23, level: 0, message number: 396
+time_difference_micros: 53, level: 1, message number: 397
+time_difference_micros: 23, level: 0, message number: 398
+time_difference_micros: 53, level: 1, message number: 399
+time_difference_micros: 23, level: 0, message number: 400
+time_difference_micros: 53, level: 1, message number: 401
+time_difference_micros: 23, level: 0, message number: 402
+time_difference_micros: 53, level: 1, message number: 403
+time_difference_micros: 23, level: 0, message number: 404
+time_difference_micros: 53, level: 1, message number: 405
+time_difference_micros: 23, level: 0, message number: 406
+time_difference_micros: 53, level: 1, message number: 407
+time_difference_micros: 23, level: 0, message number: 408
+time_difference_micros: 53, level: 1, message number: 409
+time_difference_micros: 24, level: 0, message number: 410
+time_difference_micros: 53, level: 1, message number: 411
+time_difference_micros: 23, level: 0, message number: 412
+time_difference_micros: 53, level: 1, message number: 413
+time_difference_micros: 23, level: 0, message number: 414
+time_difference_micros: 53, level: 1, message number: 415
+time_difference_micros: 23, level: 0, message number: 416
+data invalid, raw: 1c05528800
+time_difference_micros: 53, level: 1, message number: 417
+time_difference_micros: 69, level: 0, message number: 418
+time_difference_micros: 53, level: 1, message number: 419
+time_difference_micros: 69, level: 0, message number: 420
+time_difference_micros: 53, level: 1, message number: 421
+time_difference_micros: 69, level: 0, message number: 422
+time_difference_micros: 53, level: 1, message number: 423
+time_difference_micros: 23, level: 0, message number: 424
+time_difference_micros: 53, level: 1, message number: 425
+time_difference_micros: 24, level: 0, message number: 426
+time_difference_micros: 53, level: 1, message number: 427
+time_difference_micros: 23, level: 0, message number: 428
+time_difference_micros: 53, level: 1, message number: 429
+time_difference_micros: 23, level: 0, message number: 430
+time_difference_micros: 53, level: 1, message number: 431
+time_difference_micros: 23, level: 0, message number: 432
+time_difference_micros: 53, level: 1, message number: 433
+time_difference_micros: 23, level: 0, message number: 434
+time_difference_micros: 53, level: 1, message number: 435
+time_difference_micros: 23, level: 0, message number: 436
+time_difference_micros: 53, level: 1, message number: 437
+time_difference_micros: 69, level: 0, message number: 438
+time_difference_micros: 53, level: 1, message number: 439
+time_difference_micros: 23, level: 0, message number: 440
+time_difference_micros: 53, level: 1, message number: 441
+time_difference_micros: 70, level: 0, message number: 442
+time_difference_micros: 53, level: 1, message number: 443
+time_difference_micros: 23, level: 0, message number: 444
+time_difference_micros: 53, level: 1, message number: 445
+time_difference_micros: 69, level: 0, message number: 446
+time_difference_micros: 53, level: 1, message number: 447
+time_difference_micros: 23, level: 0, message number: 448
+time_difference_micros: 53, level: 1, message number: 449
+time_difference_micros: 69, level: 0, message number: 450
+time_difference_micros: 53, level: 1, message number: 451
+time_difference_micros: 23, level: 0, message number: 452
+time_difference_micros: 53, level: 1, message number: 453
+time_difference_micros: 23, level: 0, message number: 454
+time_difference_micros: 53, level: 1, message number: 455
+time_difference_micros: 69, level: 0, message number: 456
+time_difference_micros: 53, level: 1, message number: 457
+time_difference_micros: 24, level: 0, message number: 458
+time_difference_micros: 53, level: 1, message number: 459
+time_difference_micros: 16152, level: 0, message number: 460
+[0;32mI (16624) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (16644) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030467, level: 0, message number: 461
+time_difference_micros: 53, level: 1, message number: 462
+time_difference_micros: 69, level: 0, message number: 463
+time_difference_micros: 53, level: 1, message number: 464
+time_difference_micros: 23, level: 0, message number: 465
+[0;32mI (16664) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 466
+time_difference_micros: 23, level: 0, message number: 467
+time_difference_micros: 53, level: 1, message number: 468
+time_difference_micros: 23, level: 0, message number: 469
+time_difference_micros: 53, level: 1, message number: 470
+time_difference_micros: 70, level: 0, message number: 471
+time_difference_micros: 53, level: 1, message number: 472
+time_difference_micros: 23, level: 0, message number: 473
+time_difference_micros: 53, level: 1, message number: 474
+time_difference_micros: 23, level: 0, message number: 475
+time_difference_micros: 53, level: 1, message number: 476
+time_difference_micros: 23, level: 0, message number: 477
+time_difference_micros: 53, level: 1, message number: 478
+time_difference_micros: 23, level: 0, message number: 479
+time_difference_micros: 53, level: 1, message number: 480
+time_difference_micros: 23, level: 0, message number: 481
+time_difference_micros: 53, level: 1, message number: 482
+time_difference_micros: 23, level: 0, message number: 483
+time_difference_micros: 53, level: 1, message number: 484
+time_difference_micros: 23, level: 0, message number: 485
+time_difference_micros: 53, level: 1, message number: 486
+time_difference_micros: 24, level: 0, message number: 487
+time_difference_micros: 53, level: 1, message number: 488
+time_difference_micros: 23, level: 0, message number: 489
+time_difference_micros: 53, level: 1, message number: 490
+time_difference_micros: 23, level: 0, message number: 491
+time_difference_micros: 53, level: 1, message number: 492
+time_difference_micros: 23, level: 0, message number: 493
+time_difference_micros: 53, level: 1, message number: 494
+time_difference_micros: 69, level: 0, message number: 495
+time_difference_micros: 53, level: 1, message number: 496
+time_difference_micros: 69, level: 0, message number: 497
+time_difference_micros: 53, level: 1, message number: 498
+time_difference_micros: 69, level: 0, message number: 499
+data invalid, raw: e02a944007
+time_difference_micros: 53, level: 1, message number: 500
+time_difference_micros: 23, level: 0, message number: 501
+time_difference_micros: 53, level: 1, message number: 502
+time_difference_micros: 24, level: 0, message number: 503
+time_difference_micros: 53, level: 1, message number: 504
+time_difference_micros: 23, level: 0, message number: 505
+time_difference_micros: 53, level: 1, message number: 506
+time_difference_micros: 23, level: 0, message number: 507
+time_difference_micros: 53, level: 1, message number: 508
+time_difference_micros: 23, level: 0, message number: 509
+time_difference_micros: 53, level: 1, message number: 510
+time_difference_micros: 23, level: 0, message number: 511
+time_difference_micros: 53, level: 1, message number: 512
+time_difference_micros: 23, level: 0, message number: 513
+time_difference_micros: 53, level: 1, message number: 514
+time_difference_micros: 69, level: 0, message number: 515
+time_difference_micros: 53, level: 1, message number: 516
+time_difference_micros: 23, level: 0, message number: 517
+time_difference_micros: 53, level: 1, message number: 518
+time_difference_micros: 24, level: 0, message number: 519
+time_difference_micros: 53, level: 1, message number: 520
+time_difference_micros: 23, level: 0, message number: 521
+time_difference_micros: 53, level: 1, message number: 522
+time_difference_micros: 69, level: 0, message number: 523
+time_difference_micros: 53, level: 1, message number: 524
+time_difference_micros: 23, level: 0, message number: 525
+time_difference_micros: 53, level: 1, message number: 526
+time_difference_micros: 69, level: 0, message number: 527
+time_difference_micros: 53, level: 1, message number: 528
+time_difference_micros: 23, level: 0, message number: 529
+time_difference_micros: 53, level: 1, message number: 530
+time_difference_micros: 23, level: 0, message number: 531
+time_difference_micros: 53, level: 1, message number: 532
+time_difference_micros: 23, level: 0, message number: 533
+time_difference_micros: 53, level: 1, message number: 534
+time_difference_micros: 70, level: 0, message number: 535
+time_difference_micros: 53, level: 1, message number: 536
+time_difference_micros: 16197, level: 0, message number: 537
+[0;32mI (18674) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (18694) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030466, level: 0, message number: 538
+time_difference_micros: 51, level: 1, message number: 539
+time_difference_micros: 69, level: 0, message number: 540
+time_difference_micros: 53, level: 1, message number: 541
+time_difference_micros: 23, level: 0, message number: 542
+[0;32mI (18714) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 543
+time_difference_micros: 23, level: 0, message number: 544
+time_difference_micros: 53, level: 1, message number: 545
+time_difference_micros: 69, level: 0, message number: 546
+time_difference_micros: 53, level: 1, message number: 547
+time_difference_micros: 24, level: 0, message number: 548
+time_difference_micros: 53, level: 1, message number: 549
+time_difference_micros: 23, level: 0, message number: 550
+time_difference_micros: 53, level: 1, message number: 551
+time_difference_micros: 23, level: 0, message number: 552
+time_difference_micros: 53, level: 1, message number: 553
+time_difference_micros: 23, level: 0, message number: 554
+time_difference_micros: 53, level: 1, message number: 555
+time_difference_micros: 23, level: 0, message number: 556
+time_difference_micros: 53, level: 1, message number: 557
+time_difference_micros: 23, level: 0, message number: 558
+time_difference_micros: 53, level: 1, message number: 559
+time_difference_micros: 23, level: 0, message number: 560
+time_difference_micros: 53, level: 1, message number: 561
+time_difference_micros: 23, level: 0, message number: 562
+time_difference_micros: 53, level: 1, message number: 563
+time_difference_micros: 24, level: 0, message number: 564
+time_difference_micros: 53, level: 1, message number: 565
+time_difference_micros: 23, level: 0, message number: 566
+time_difference_micros: 53, level: 1, message number: 567
+time_difference_micros: 23, level: 0, message number: 568
+time_difference_micros: 53, level: 1, message number: 569
+time_difference_micros: 23, level: 0, message number: 570
+time_difference_micros: 53, level: 1, message number: 571
+time_difference_micros: 69, level: 0, message number: 572
+time_difference_micros: 53, level: 1, message number: 573
+time_difference_micros: 69, level: 0, message number: 574
+time_difference_micros: 53, level: 1, message number: 575
+time_difference_micros: 69, level: 0, message number: 576
+time_difference_micros: 53, level: 1, message number: 577
+time_difference_micros: 23, level: 0, message number: 578
+time_difference_micros: 53, level: 1, message number: 579
+time_difference_micros: 24, level: 0, message number: 580
+time_difference_micros: 53, level: 1, message number: 581
+time_difference_micros: 23, level: 0, message number: 582
+data invalid, raw: 114640038
+time_difference_micros: 53, level: 1, message number: 583
+time_difference_micros: 23, level: 0, message number: 584
+time_difference_micros: 53, level: 1, message number: 585
+time_difference_micros: 23, level: 0, message number: 586
+time_difference_micros: 53, level: 1, message number: 587
+time_difference_micros: 23, level: 0, message number: 588
+time_difference_micros: 53, level: 1, message number: 589
+time_difference_micros: 23, level: 0, message number: 590
+time_difference_micros: 53, level: 1, message number: 591
+time_difference_micros: 69, level: 0, message number: 592
+time_difference_micros: 53, level: 1, message number: 593
+time_difference_micros: 23, level: 0, message number: 594
+time_difference_micros: 53, level: 1, message number: 595
+time_difference_micros: 70, level: 0, message number: 596
+time_difference_micros: 53, level: 1, message number: 597
+time_difference_micros: 23, level: 0, message number: 598
+time_difference_micros: 53, level: 1, message number: 599
+time_difference_micros: 69, level: 0, message number: 600
+time_difference_micros: 53, level: 1, message number: 601
+time_difference_micros: 23, level: 0, message number: 602
+time_difference_micros: 53, level: 1, message number: 603
+time_difference_micros: 69, level: 0, message number: 604
+time_difference_micros: 53, level: 1, message number: 605
+time_difference_micros: 23, level: 0, message number: 606
+time_difference_micros: 53, level: 1, message number: 607
+time_difference_micros: 23, level: 0, message number: 608
+time_difference_micros: 53, level: 1, message number: 609
+time_difference_micros: 69, level: 0, message number: 610
+time_difference_micros: 53, level: 1, message number: 611
+time_difference_micros: 70, level: 0, message number: 612
+time_difference_micros: 53, level: 1, message number: 613
+time_difference_micros: 16109, level: 0, message number: 614
+[0;32mI (20724) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (20744) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030466, level: 0, message number: 615
+time_difference_micros: 52, level: 1, message number: 616
+time_difference_micros: 69, level: 0, message number: 617
+time_difference_micros: 53, level: 1, message number: 618
+time_difference_micros: 23, level: 0, message number: 619
+[0;32mI (20764) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 620
+time_difference_micros: 23, level: 0, message number: 621
+time_difference_micros: 53, level: 1, message number: 622
+time_difference_micros: 69, level: 0, message number: 623
+time_difference_micros: 53, level: 1, message number: 624
+time_difference_micros: 24, level: 0, message number: 625
+time_difference_micros: 53, level: 1, message number: 626
+time_difference_micros: 23, level: 0, message number: 627
+time_difference_micros: 53, level: 1, message number: 628
+time_difference_micros: 23, level: 0, message number: 629
+time_difference_micros: 53, level: 1, message number: 630
+time_difference_micros: 23, level: 0, message number: 631
+time_difference_micros: 53, level: 1, message number: 632
+time_difference_micros: 23, level: 0, message number: 633
+time_difference_micros: 53, level: 1, message number: 634
+time_difference_micros: 23, level: 0, message number: 635
+time_difference_micros: 53, level: 1, message number: 636
+time_difference_micros: 23, level: 0, message number: 637
+time_difference_micros: 53, level: 1, message number: 638
+time_difference_micros: 23, level: 0, message number: 639
+time_difference_micros: 53, level: 1, message number: 640
+time_difference_micros: 24, level: 0, message number: 641
+time_difference_micros: 53, level: 1, message number: 642
+time_difference_micros: 23, level: 0, message number: 643
+time_difference_micros: 53, level: 1, message number: 644
+time_difference_micros: 23, level: 0, message number: 645
+time_difference_micros: 53, level: 1, message number: 646
+time_difference_micros: 23, level: 0, message number: 647
+time_difference_micros: 53, level: 1, message number: 648
+time_difference_micros: 69, level: 0, message number: 649
+time_difference_micros: 53, level: 1, message number: 650
+time_difference_micros: 69, level: 0, message number: 651
+time_difference_micros: 53, level: 1, message number: 652
+time_difference_micros: 69, level: 0, message number: 653
+time_difference_micros: 53, level: 1, message number: 654
+time_difference_micros: 23, level: 0, message number: 655
+time_difference_micros: 53, level: 1, message number: 656
+time_difference_micros: 24, level: 0, message number: 657
+time_difference_micros: 53, level: 1, message number: 658
+time_difference_micros: 23, level: 0, message number: 659
+time_difference_micros: 53, level: 1, message number: 660
+time_difference_micros: 23, level: 0, message number: 661
+time_difference_micros: 53, level: 1, message number: 662
+time_difference_micros: 23, level: 0, message number: 663
+time_difference_micros: 53, level: 1, message number: 664
+time_difference_micros: 23, level: 0, message number: 665
+data invalid, raw: aa72001c0
+time_difference_micros: 53, level: 1, message number: 666
+time_difference_micros: 23, level: 0, message number: 667
+time_difference_micros: 53, level: 1, message number: 668
+time_difference_micros: 69, level: 0, message number: 669
+time_difference_micros: 53, level: 1, message number: 670
+time_difference_micros: 23, level: 0, message number: 671
+time_difference_micros: 53, level: 1, message number: 672
+time_difference_micros: 70, level: 0, message number: 673
+time_difference_micros: 53, level: 1, message number: 674
+time_difference_micros: 23, level: 0, message number: 675
+time_difference_micros: 53, level: 1, message number: 676
+time_difference_micros: 69, level: 0, message number: 677
+time_difference_micros: 53, level: 1, message number: 678
+time_difference_micros: 23, level: 0, message number: 679
+time_difference_micros: 53, level: 1, message number: 680
+time_difference_micros: 69, level: 0, message number: 681
+time_difference_micros: 53, level: 1, message number: 682
+time_difference_micros: 23, level: 0, message number: 683
+time_difference_micros: 53, level: 1, message number: 684
+time_difference_micros: 23, level: 0, message number: 685
+time_difference_micros: 53, level: 1, message number: 686
+time_difference_micros: 69, level: 0, message number: 687
+time_difference_micros: 53, level: 1, message number: 688
+time_difference_micros: 70, level: 0, message number: 689
+time_difference_micros: 53, level: 1, message number: 690
+time_difference_micros: 16108, level: 0, message number: 691
+[0;32mI (22774) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (22794) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030466, level: 0, message number: 692
+time_difference_micros: 51, level: 1, message number: 693
+time_difference_micros: 69, level: 0, message number: 694
+time_difference_micros: 53, level: 1, message number: 695
+time_difference_micros: 23, level: 0, message number: 696
+[0;32mI (22814) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 697
+time_difference_micros: 23, level: 0, message number: 698
+time_difference_micros: 53, level: 1, message number: 699
+time_difference_micros: 69, level: 0, message number: 700
+time_difference_micros: 53, level: 1, message number: 701
+time_difference_micros: 24, level: 0, message number: 702
+time_difference_micros: 53, level: 1, message number: 703
+time_difference_micros: 23, level: 0, message number: 704
+time_difference_micros: 53, level: 1, message number: 705
+time_difference_micros: 23, level: 0, message number: 706
+time_difference_micros: 53, level: 1, message number: 707
+time_difference_micros: 23, level: 0, message number: 708
+time_difference_micros: 53, level: 1, message number: 709
+time_difference_micros: 23, level: 0, message number: 710
+time_difference_micros: 53, level: 1, message number: 711
+time_difference_micros: 23, level: 0, message number: 712
+time_difference_micros: 53, level: 1, message number: 713
+time_difference_micros: 23, level: 0, message number: 714
+time_difference_micros: 53, level: 1, message number: 715
+time_difference_micros: 23, level: 0, message number: 716
+time_difference_micros: 53, level: 1, message number: 717
+time_difference_micros: 24, level: 0, message number: 718
+time_difference_micros: 53, level: 1, message number: 719
+time_difference_micros: 23, level: 0, message number: 720
+time_difference_micros: 53, level: 1, message number: 721
+time_difference_micros: 23, level: 0, message number: 722
+time_difference_micros: 53, level: 1, message number: 723
+time_difference_micros: 23, level: 0, message number: 724
+time_difference_micros: 53, level: 1, message number: 725
+time_difference_micros: 69, level: 0, message number: 726
+time_difference_micros: 53, level: 1, message number: 727
+time_difference_micros: 69, level: 0, message number: 728
+time_difference_micros: 53, level: 1, message number: 729
+time_difference_micros: 69, level: 0, message number: 730
+time_difference_micros: 53, level: 1, message number: 731
+time_difference_micros: 23, level: 0, message number: 732
+time_difference_micros: 53, level: 1, message number: 733
+time_difference_micros: 24, level: 0, message number: 734
+time_difference_micros: 53, level: 1, message number: 735
+time_difference_micros: 23, level: 0, message number: 736
+time_difference_micros: 53, level: 1, message number: 737
+time_difference_micros: 23, level: 0, message number: 738
+time_difference_micros: 53, level: 1, message number: 739
+time_difference_micros: 23, level: 0, message number: 740
+time_difference_micros: 53, level: 1, message number: 741
+time_difference_micros: 23, level: 0, message number: 742
+time_difference_micros: 53, level: 1, message number: 743
+time_difference_micros: 23, level: 0, message number: 744
+time_difference_micros: 53, level: 1, message number: 745
+time_difference_micros: 69, level: 0, message number: 746
+time_difference_micros: 53, level: 1, message number: 747
+time_difference_micros: 23, level: 0, message number: 748
+data invalid, raw: 5539000e02
+time_difference_micros: 53, level: 1, message number: 749
+time_difference_micros: 24, level: 0, message number: 750
+time_difference_micros: 53, level: 1, message number: 751
+time_difference_micros: 23, level: 0, message number: 752
+time_difference_micros: 53, level: 1, message number: 753
+time_difference_micros: 69, level: 0, message number: 754
+time_difference_micros: 53, level: 1, message number: 755
+time_difference_micros: 23, level: 0, message number: 756
+time_difference_micros: 53, level: 1, message number: 757
+time_difference_micros: 69, level: 0, message number: 758
+time_difference_micros: 53, level: 1, message number: 759
+time_difference_micros: 23, level: 0, message number: 760
+time_difference_micros: 53, level: 1, message number: 761
+time_difference_micros: 23, level: 0, message number: 762
+time_difference_micros: 53, level: 1, message number: 763
+time_difference_micros: 69, level: 0, message number: 764
+time_difference_micros: 53, level: 1, message number: 765
+time_difference_micros: 24, level: 0, message number: 766
+time_difference_micros: 53, level: 1, message number: 767
+time_difference_micros: 16200, level: 0, message number: 768
+[0;32mI (24824) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (24844) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030467, level: 0, message number: 769
+time_difference_micros: 53, level: 1, message number: 770
+time_difference_micros: 69, level: 0, message number: 771
+time_difference_micros: 53, level: 1, message number: 772
+time_difference_micros: 23, level: 0, message number: 773
+[0;32mI (24864) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 774
+time_difference_micros: 23, level: 0, message number: 775
+time_difference_micros: 53, level: 1, message number: 776
+time_difference_micros: 69, level: 0, message number: 777
+time_difference_micros: 53, level: 1, message number: 778
+time_difference_micros: 24, level: 0, message number: 779
+time_difference_micros: 53, level: 1, message number: 780
+time_difference_micros: 23, level: 0, message number: 781
+time_difference_micros: 53, level: 1, message number: 782
+time_difference_micros: 23, level: 0, message number: 783
+time_difference_micros: 53, level: 1, message number: 784
+time_difference_micros: 23, level: 0, message number: 785
+time_difference_micros: 53, level: 1, message number: 786
+time_difference_micros: 23, level: 0, message number: 787
+time_difference_micros: 53, level: 1, message number: 788
+time_difference_micros: 23, level: 0, message number: 789
+time_difference_micros: 53, level: 1, message number: 790
+time_difference_micros: 23, level: 0, message number: 791
+time_difference_micros: 53, level: 1, message number: 792
+time_difference_micros: 23, level: 0, message number: 793
+time_difference_micros: 53, level: 1, message number: 794
+time_difference_micros: 24, level: 0, message number: 795
+time_difference_micros: 53, level: 1, message number: 796
+time_difference_micros: 23, level: 0, message number: 797
+time_difference_micros: 53, level: 1, message number: 798
+time_difference_micros: 23, level: 0, message number: 799
+time_difference_micros: 53, level: 1, message number: 800
+time_difference_micros: 23, level: 0, message number: 801
+time_difference_micros: 53, level: 1, message number: 802
+time_difference_micros: 69, level: 0, message number: 803
+time_difference_micros: 53, level: 1, message number: 804
+time_difference_micros: 69, level: 0, message number: 805
+time_difference_micros: 53, level: 1, message number: 806
+time_difference_micros: 69, level: 0, message number: 807
+time_difference_micros: 53, level: 1, message number: 808
+time_difference_micros: 23, level: 0, message number: 809
+time_difference_micros: 53, level: 1, message number: 810
+time_difference_micros: 24, level: 0, message number: 811
+time_difference_micros: 53, level: 1, message number: 812
+time_difference_micros: 23, level: 0, message number: 813
+time_difference_micros: 53, level: 1, message number: 814
+time_difference_micros: 23, level: 0, message number: 815
+time_difference_micros: 53, level: 1, message number: 816
+time_difference_micros: 23, level: 0, message number: 817
+time_difference_micros: 53, level: 1, message number: 818
+time_difference_micros: 23, level: 0, message number: 819
+time_difference_micros: 53, level: 1, message number: 820
+time_difference_micros: 23, level: 0, message number: 821
+time_difference_micros: 53, level: 1, message number: 822
+time_difference_micros: 69, level: 0, message number: 823
+time_difference_micros: 53, level: 1, message number: 824
+time_difference_micros: 23, level: 0, message number: 825
+time_difference_micros: 53, level: 1, message number: 826
+time_difference_micros: 24, level: 0, message number: 827
+time_difference_micros: 53, level: 1, message number: 828
+time_difference_micros: 23, level: 0, message number: 829
+time_difference_micros: 53, level: 1, message number: 830
+time_difference_micros: 69, level: 0, message number: 831
+data invalid, raw: 2948007011
+time_difference_micros: 53, level: 1, message number: 832
+time_difference_micros: 23, level: 0, message number: 833
+time_difference_micros: 53, level: 1, message number: 834
+time_difference_micros: 69, level: 0, message number: 835
+time_difference_micros: 53, level: 1, message number: 836
+time_difference_micros: 23, level: 0, message number: 837
+time_difference_micros: 53, level: 1, message number: 838
+time_difference_micros: 23, level: 0, message number: 839
+time_difference_micros: 53, level: 1, message number: 840
+time_difference_micros: 69, level: 0, message number: 841
+time_difference_micros: 53, level: 1, message number: 842
+time_difference_micros: 24, level: 0, message number: 843
+time_difference_micros: 53, level: 1, message number: 844
+time_difference_micros: 16198, level: 0, message number: 845
+[0;32mI (26874) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (26894) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:3 [0m
+time_difference_micros: 2030466, level: 0, message number: 846
+time_difference_micros: 52, level: 1, message number: 847
+time_difference_micros: 69, level: 0, message number: 848
+time_difference_micros: 53, level: 1, message number: 849
+time_difference_micros: 23, level: 0, message number: 850
+[0;32mI (26914) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+time_difference_micros: 53, level: 1, message number: 851
+time_difference_micros: 23, level: 0, message number: 852
+time_difference_micros: 53, level: 1, message number: 853
+time_difference_micros: 69, level: 0, message number: 854
+time_difference_micros: 53, level: 1, message number: 855
+time_difference_micros: 24, level: 0, message number: 856
+time_difference_micros: 53, level: 1, message number: 857
+time_difference_micros: 23, level: 0, message number: 858
+time_difference_micros: 53, level: 1, message number: 859
+time_difference_micros: 23, level: 0, message number: 860
+time_difference_micros: 53, level: 1, message number: 861
+time_difference_micros: 23, level: 0, message number: 862
+time_difference_micros: 53, level: 1, message number: 863
+time_difference_micros: 23, level: 0, message number: 864
+time_difference_micros: 53, level: 1, message number: 865
+time_difference_micros: 23, level: 0, message number: 866
+time_difference_micros: 53, level: 1, message number: 867
+time_difference_micros: 23, level: 0, message number: 868
+time_difference_micros: 53, level: 1, message number: 869
+time_difference_micros: 23, level: 0, message number: 870
+time_difference_micros: 53, level: 1, message number: 871
+time_difference_micros: 24, level: 0, message number: 872
+time_difference_micros: 53, level: 1, message number: 873
+time_difference_micros: 23, level: 0, message number: 874
+time_difference_micros: 53, level: 1, message number: 875
+time_difference_micros: 23, level: 0, message number: 876
+time_difference_micros: 53, level: 1, message number: 877
+time_difference_micros: 23, level: 0, message number: 878
+time_difference_micros: 53, level: 1, message number: 879
+time_difference_micros: 69, level: 0, message number: 880
+time_difference_micros: 53, level: 1, message number: 881
+time_difference_micros: 69, level: 0, message number: 882
+time_difference_micros: 53, level: 1, message number: 883
+time_difference_micros: 69, level: 0, message number: 884
+time_difference_micros: 53, level: 1, message number: 885
+time_difference_micros: 23, level: 0, message number: 886
+time_difference_micros: 53, level: 1, message number: 887
+time_difference_micros: 24, level: 0, message number: 888
+time_difference_micros: 53, level: 1, message number: 889
+time_difference_micros: 23, level: 0, message number: 890
+time_difference_micros: 53, level: 1, message number: 891
+time_difference_micros: 23, level: 0, message number: 892
+time_difference_micros: 53, level: 1, message number: 893
+time_difference_micros: 23, level: 0, message number: 894
+time_difference_micros: 53, level: 1, message number: 895
+time_difference_micros: 23, level: 0, message number: 896
+time_difference_micros: 53, level: 1, message number: 897
+time_difference_micros: 23, level: 0, message number: 898
+time_difference_micros: 53, level: 1, message number: 899
+time_difference_micros: 69, level: 0, message number: 900
+time_difference_micros: 53, level: 1, message number: 901
+time_difference_micros: 23, level: 0, message number: 902
+time_difference_micros: 53, level: 1, message number: 903
+time_difference_micros: 70, level: 0, message number: 904
+time_difference_micros: 53, level: 1, message number: 905
+time_difference_micros: 23, level: 0, message number: 906
+time_difference_micros: 53, level: 1, message number: 907
+time_difference_micros: 69, level: 0, message number: 908
+time_difference_micros: 53, level: 1, message number: 909
+time_difference_micros: 23, level: 0, message number: 910
+time_difference_micros: 53, level: 1, message number: 911
+time_difference_micros: 69, level: 0, message number: 912
+time_difference_micros: 53, level: 1, message number: 913
+time_difference_micros: 23, level: 0, message number: 914
+data invalid, raw: 4a400380aa
+time_difference_micros: 53, level: 1, message number: 915
+time_difference_micros: 23, level: 0, message number: 916
+time_difference_micros: 53, level: 1, message number: 917
+time_difference_micros: 69, level: 0, message number: 918
+time_difference_micros: 53, level: 1, message number: 919
+time_difference_micros: 70, level: 0, message number: 920
+time_difference_micros: 53, level: 1, message number: 921
+time_difference_micros: 16108, level: 0, message number: 922
+Executing action: flash
+Running ninja in directory /Users/Ryan1/esp/new_proj/build
+Executing "ninja flash"...
+Executing action: monitor
+Running idf_monitor in directory /Users/Ryan1/esp/new_proj
+Executing "/Users/Ryan1/.espressif/python_env/idf4.4_py3.9_env/bin/python /Users/Ryan1/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-0001 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/Ryan1/esp/new_proj/build/new_proj.elf -m '/Users/Ryan1/.espressif/python_env/idf4.4_py3.9_env/bin/python' '/Users/Ryan1/esp/esp-idf/tools/idf.py' '-p' '/dev/cu.usbserial-0001'"...
+Done
